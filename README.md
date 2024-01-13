@@ -4,7 +4,7 @@
   </a>
   <h1>MediaEase</h1>
   <p>
-    <a href="https://mediaease.github.io/docs/"><strong>Ddocumentation</strong></a> ·
+    <a href="https://mediaease.github.io/docs/"><strong>Documentation</strong></a> ·
     <a href="https://github.com/MediaEase/MediaEase/issues/new?assignees=&labels=bug&template=01_BUG_REPORT.md&title=bug%3A+">Report a Bug</a> ·
     <a href="https://github.com/MediaEase/MediaEase/issues/new?assignees=&labels=enhancement&template=02_FEATURE_REQUEST.md&title=feat%3A+">Request a Feature</a> ·
     <a href="https://github.com/MediaEase/MediaEase/discussions">Ask a Question</a>
