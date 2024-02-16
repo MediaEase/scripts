@@ -1,4 +1,4 @@
-name: Create Release and Update Frontend
+name: Create Release and Update scripts
 
 on:
   push:
@@ -44,3 +44,25 @@ jobs:
           curl -sSL https://raw.githubusercontent.com/MediaEase/HarmonyUI/develop/.github/scripts/create-release.sh -o .github/scripts/create-release.sh
           chmod +x .github/scripts/create-release.sh
           bash .github/scripts/create-release.sh
+
+  update_submodule:
+    runs-on: ubuntu-latest
+    needs: create_release
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref }}
+          token: ${{ secrets.MEDIAEASE_ACCESS_TOKEN }}
+          fetch-depth: 0
+
+      - name: Repository Dispatch for scripts
+        uses: peter-evans/repository-dispatch@v3
+        with:
+          token: ${{ secrets.MEDIAEASE_ACCESS_TOKEN }}
+          repository: MediaEase/MediaEase
+          event-type: scripts-release
+          client-payload: '{ "submodule": "scripts", "ref": "${{ github.ref_name }}", "sha": "${{ github.sha }}"}'
